@@ -5,6 +5,8 @@ sito focalizzato sul Sudafrica. Il sito esistente non viene modificato da questo
 progetto. Stack: Next.js App Router, TypeScript, Tailwind CSS, componenti shadcn/ui
 e MDX. Nessun database, CMS o autenticazione.
 
+Repository privato: [etanoox/casinopoly-south-africa](https://github.com/etanoox/casinopoly-south-africa).
+
 ## Avvio e verifica
 
 Richiede Node.js 24 e npm. Il lockfile è incluso per build riproducibili.
@@ -129,7 +131,7 @@ non include il sorgente delle Functions.
 La Git integration di Pages gestisce deploy e preview a ogni push senza copiare
 token Cloudflare in GitHub Actions. Usare inizialmente il dominio di preview
 `.pages.dev`; collegare `casinopoly.io` solo dopo la revisione della migrazione.
-Il nome provvisorio del progetto Pages è `casinopoly`; può essere adattato in
+Il nome del nuovo progetto Pages è `casinopoly-south-africa`; può essere adattato in
 `wrangler.jsonc` prima della creazione per evitare conflitti con il sito attuale.
 
 Alternativa CLI, dopo aver autenticato l'account e selezionato il progetto corretto:

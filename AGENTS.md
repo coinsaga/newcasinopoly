@@ -11,8 +11,7 @@ scrivere i contenuti pubblici del sito in inglese naturale per il Sudafrica.
 - Ragionare come senior developer Next.js, technical SEO specialist e affiliate
   SEO strategist. Costruire il sito passo dopo passo, evitando overengineering.
 - Nome e dominio confermati: Casinopoly, https://casinopoly.io/. Il nuovo sito
-  sostituirà quello esistente; il riferimento a coinsaga.com era un errore
-  esplicitamente corretto dall'utente e non va utilizzato.
+  sostituirà quello esistente.
 - L'utente ha autorizzato il primo passo di implementazione. Procedere per fasi;
   identità visiva definitiva ed elenco operatori sono ancora da definire.
 
