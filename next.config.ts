@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   output: "export",
   pageExtensions: ["ts", "tsx", "md", "mdx"],
   poweredByHeader: false,
+  devIndicators: false,
   images: { unoptimized: true },
 };
 

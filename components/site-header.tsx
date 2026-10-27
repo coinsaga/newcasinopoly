@@ -1,46 +1,57 @@
+import Image from "next/image";
 import Link from "next/link";
+import { ChevronIcon, FlagZA } from "@/components/icons";
+import { NavigationDropdown } from "@/components/navigation-dropdown";
 
-import { site } from "@/lib/site";
+const navigation = [
+  { label: "Compare operators", links: [
+    { label: "Operator comparison", href: "/#compare" },
+    { label: "Operator reviews", href: "/reviews" },
+    { label: "How we compare", href: "/about" },
+  ] },
+  { label: "Payment methods", links: [
+    { label: "Compare payment methods", href: "/#payment-methods" },
+    { label: "What to check before depositing", href: "/guides/check-an-operator" },
+  ] },
+  { label: "Guides", links: [
+    { label: "All player guides", href: "/guides" },
+    { label: "Check an operator", href: "/guides/check-an-operator" },
+    { label: "Understand offer terms", href: "/guides/understand-offer-terms" },
+  ] },
+];
 
 export function SiteHeader() {
   return (
-    <header className="border-b border-border">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-8 gap-y-5 px-5 py-5 sm:px-8 sm:py-6">
-        <Link
-          href="/"
-          aria-label={`${site.name} home`}
-          className="inline-flex items-center gap-2.5 rounded-sm text-lg font-semibold tracking-tight transition-opacity hover:opacity-75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
-        >
-          <span
-            aria-hidden="true"
-            className="grid size-7 grid-cols-2 gap-1"
-          >
-            <span className="rounded-[2px] bg-foreground" />
-            <span className="rounded-[2px] bg-primary" />
-            <span className="rounded-[2px] bg-foreground" />
-            <span className="rounded-[2px] bg-foreground" />
-          </span>
-          {site.name}
+    <header className="site-header">
+      <div className="site-container navigation">
+        <Link href="/" className="brand-link" aria-label="Casinopoly home">
+          <Image src="/brand/casinopoly-logo.svg" alt="Casinopoly" width={911} height={201} priority className="brand-logo" />
         </Link>
-
-        <nav aria-label="Main navigation">
-          <ul className="flex items-center gap-6 text-sm sm:gap-8">
-            {[
-              { href: "/guides", label: "Guides" },
-              { href: "/reviews", label: "Reviews" },
-              { href: "/about", label: "About" },
-            ].map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="inline-flex min-h-10 items-center rounded-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        <nav aria-label="Main navigation" className="main-nav">
+          {navigation.map(({ label, links }) => (
+            <NavigationDropdown key={label} className="nav-dropdown" name="desktop-navigation">
+              <summary>{label}<ChevronIcon /></summary>
+              <div className="nav-menu">
+                {links.map((link) => <Link key={link.href} href={link.href}>{link.label}</Link>)}
+              </div>
+            </NavigationDropdown>
+          ))}
+          <Link href="/responsible-gambling">Responsible gambling</Link>
         </nav>
+        <span className="country-label" aria-label="South Africa, English">
+          <FlagZA /><span>South Africa <span aria-hidden="true">|</span> EN</span>
+        </span>
+        <NavigationDropdown className="mobile-navigation">
+          <summary aria-label="Open navigation"><span /><span /><span /></summary>
+          <nav aria-label="Mobile navigation">
+            <Link href="/#compare">Compare operators</Link>
+            <Link href="/#payment-methods">Payment methods</Link>
+            <Link href="/guides">Guides</Link>
+            <Link href="/reviews">Operator reviews</Link>
+            <Link href="/responsible-gambling">Responsible gambling</Link>
+            <Link href="/about">About Casinopoly</Link>
+          </nav>
+        </NavigationDropdown>
       </div>
     </header>
   );

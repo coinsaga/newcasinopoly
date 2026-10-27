@@ -18,7 +18,7 @@ export default function AboutPage() {
         <h2>Evidence before recommendations</h2>
         <p>Our operator reviews are being prepared. Before publishing an operator, we check its legal entity, licensing information and the specific products covered by its local authorisation. A website accepting South African customers is not, by itself, evidence of authorisation.</p>
         <p>We link to primary sources where relevant and show when each guide was updated. We do not describe an account or withdrawal as personally tested unless we have actually carried out and documented that test.</p>
-        <h2>How affiliate links work</h2>
+        <h2 id="affiliate-disclosure">How affiliate links work</h2>
         <p>We may earn a commission if you follow an affiliate link and meet an operator’s qualifying conditions. Commercial links will be identified. A commission is not a guarantee that an operator or product is suitable for you.</p>
         <h2>For South African readers</h2>
         <p>We use rand amounts and check local availability rather than assuming that international offers, payment methods or licences apply in South Africa.</p>

@@ -1,7 +1,10 @@
+import type { OperatorReviewData } from "./review.ts";
+
 export type Casino = {
   /** Stable lowercase URL identifier shared with the MDX review. */
   slug: string;
   name: string;
+  legalName?: string;
   status: "draft" | "published";
   currency: "ZAR";
   /** Include only payment methods verified for South African customers. */
@@ -22,4 +25,5 @@ export type Casino = {
     /** Exact hostnames only, without schemes, ports or wildcard patterns. */
     allowedHosts: readonly string[];
   };
+  review?: OperatorReviewData;
 };

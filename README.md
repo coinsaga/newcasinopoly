@@ -37,6 +37,7 @@ components/                  Shell, template editoriali e CTA affiliate
 components/ui/               Componenti shadcn/ui mantenuti nel repository
 data/casinos.ts               Dati strutturati degli operatori
 types/casino.ts               Modello Casino
+types/review.ts               Dati, pagamenti, offerte e fonti della recensione
 content/reviews/*.mdx         Testi delle recensioni
 content/guides/*.mdx          Testi delle guide
 lib/content.ts               Registry editoriale e import MDX espliciti
@@ -48,12 +49,45 @@ tests/affiliate.test.ts      Test delle regole affiliate e del wrapper Pages
 ```
 
 MDX è compilato in build: nessun accesso al filesystem o esecuzione di MDX remoto
-nel runtime Cloudflare. Le pagine sono Server Components salvo necessità futura
-di interazioni client. Aggiungere una dipendenza solo per un bisogno concreto.
+nel runtime Cloudflare. Le pagine e i contenuti editoriali sono Server Components;
+il confronto usa JavaScript client per filtri, ordinamento, bookmark e pannelli.
+Aggiungere una dipendenza solo per un bisogno concreto.
 
 ## Operatori e recensioni
 
-Il catalogo è inizialmente vuoto. Non ci sono operatori, bonus o rating fittizi.
+Il catalogo pubblicato è inizialmente vuoto. La homepage mostra quattro
+schede “Demo Operator A–D”, definite in `data/comparison-preview.ts` e separate da
+`data/casinos.ts` e dal registry editoriale. I punteggi editoriali demo sono
+9.4/9.2/8.9/8.7 su 10; i reader rating demo sono 4.7/4.6/4.4/4.3 su 5.
+Nomi, voti, campi licenza, depositi ZAR, caratteristiche e pagamenti sono
+placeholder esplicitamente dichiarati: non sono valutazioni di operatori reali
+o recensioni raccolte dagli utenti. Nessuno schema Review/AggregateRating viene
+generato da questi esempi.
+
+Filtri per pagamento, deposito minimo e caratteristiche, chip di pagamento e
+ordinamento agiscono sulla lista demo. Il bookmark vive nella memoria del
+componente e non persiste tra ricaricamenti. “Explore operator” e “Read our review”
+espandono pannelli dimostrativi inline: nessuna nuova pagina casino o recensione,
+registrazione o collegamento affiliate viene aperto.
+
+Il template recensioni autorizzato il 22 ottobre 2026 è visibile in
+`/reviews/yesplay` e nell'indice `/reviews` durante `designPreview`. YesPlay è un
+record reale in bozza, separato dai quattro esempi della homepage: dati e fonti
+in `data/casinos.ts`, testo in `content/reviews/yesplay.mdx`, composizione server
+in `components/reviews/`. Il precedente voto Casinopoly di 4.3/5 è attribuito alla
+vecchia recensione, senza nuova valutazione o schema Review/AggregateRating.
+La bozza resta noindex, esclusa dalla sitemap e priva di redirect affiliate.
+
+Il nuovo design segue il mockup dell'utente: hero navy, CTA oro, mascotte v2 con
+anello, chip e dadi, striscia informativa sovrapposta e footer compatto. Le lunghe
+sezioni guida/FAQ sono rimosse dalla homepage; le route editoriali restano attive.
+Logo e favicon sono locali in `public/brand/`; il nuovo hero trasparente è
+`casinopoly-hero-v2.webp`. Manrope è self-hosted con licenza in `public/fonts/`.
+La direzione grafica è documentata in `docs/design-review.md`, la provenienza del
+nuovo hero in `docs/hero-v2-asset.md` e degli altri asset in `docs/brand-assets.md`.
+La prima versione resta recuperabile nella cronologia Git.
+La build blocca `SITE_INDEXABLE=true` finché `designPreview` è attivo in
+`lib/site.ts`: rimuovere gli esempi e il blocco insieme al lancio effettivo.
 
 1. Aggiungere un record in `data/casinos.ts`, iniziando con `status: "draft"` e
    `affiliate.enabled: false`.
@@ -61,13 +95,18 @@ Il catalogo è inizialmente vuoto. Non ci sono operatori, bonus o rating fittizi
    metodi di pagamento; registrare fonte e data in `licence`.
 3. Scrivere la recensione in `content/reviews/<slug>.mdx`, partendo da
    `_template.mdx`. Slug operatore e recensione devono coincidere.
-4. Aggiungere l'import MDX e l'entry a `reviewEntries` in `lib/content.ts`.
-5. Alla **prima** recensione pubblicabile, rinominare la cartella
-   `app/reviews/_draft-route` in `app/reviews/[slug]`. Next.js static export richiede
-   almeno un parametro effettivo per una route dinamica. In seguito basta
-   aggiornare il registry.
-6. Impostare lo stato pubblicato solo dopo le verifiche. Il gate automatico
-   controlla la completezza del record, non certifica la sua liceità.
+4. Compilare il profilo `review` del record con logo locale, dati strutturati e
+   fonti datate; aggiungere import MDX e metadati a `reviewEntries` in
+   `lib/content.ts`, inizialmente con `status: "draft"`.
+5. La route esistente `app/reviews/[slug]/page.tsx` genera gli slug di
+   `reviewPages`: recensioni pubblicate più bozze solo quando `designPreview` è
+   attivo. Non sono necessarie rinomine di cartelle. `reviews` contiene invece
+   soltanto entry editoriali pubblicate il cui operatore supera
+   `getPublishedCasinos()`; alimenta l'indicizzazione e la sitemap.
+6. Pubblicare sia il record operatore sia l'entry editoriale solo dopo le
+   verifiche. Il gate controlla la completezza, non certifica la liceità. Prima
+   di disattivare `designPreview`, mantenere almeno uno slug pubblicabile per
+   l'export della route dinamica. L'attivazione affiliate resta una scelta separata.
 
 Le informazioni variabili degli operatori appartengono a TypeScript; MDX contiene
 analisi e spiegazioni. Title, description e data aggiornamento editoriale sono nel

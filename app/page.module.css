@@ -1,0 +1,77 @@
+.home { background: #f0f5fb; }
+.hero { position: relative; overflow: hidden; color: white; background: linear-gradient(110deg, #063e76, #064277 70%, #073b6e); }
+.heroInner { position: relative; min-height: 328px; display: flex; align-items: center; }
+.heroCopy { position: relative; z-index: 1; padding: 44px 0 62px 16px; }
+.goldLine { display: block; width: 77px; height: 4px; background: #f4ae23; margin-bottom: 15px; }
+.heroCopy h1 { max-width: 720px; font-size: clamp(36px, 4.28vw, 51px); font-weight: 800; line-height: 1.1; letter-spacing: -.038em; }
+.heroCopy p { font-size: clamp(16px, 1.94vw, 21px); line-height: 1.5; margin-top: 12px; letter-spacing: -.015em; }
+.heroButton { display: inline-flex; align-items: center; justify-content: center; gap: 10px; margin-top: 18px; min-height: 44px; padding: 10px 22px; border: 1px solid #f8bd47; border-radius: 6px; background: linear-gradient(100deg, #ffb629, #efa51b); color: #07376b; font-size: 16px; font-weight: 800; box-shadow: inset 0 1px 0 #ffcf72; transition: background .15s, transform .15s; }
+.heroButton:hover { background: #ffc34a; transform: translateY(-1px); }
+.heroButton:focus-visible { outline-color: white; }
+.heroButton svg { width: 18px; height: 18px; }
+.heroArt { position: absolute; right: -20px; top: 0; bottom: 0; width: 39%; }
+.boardPattern { position: absolute; width: 470px; height: 360px; max-width: none; right: -80px; top: 0; color: #12609a; opacity: .56; }
+.mascot { position: absolute; width: 310px; height: 310px; max-width: none; object-fit: contain; right: 20px; top: 14px; }
+.promiseStrip { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(3, 1fr); padding: 23px 20px; margin: -20px 5px 0; background: white; border: 1px solid #edf2f8; border-radius: 9px; }
+.promise { display: flex; align-items: center; gap: 22px; padding-inline: 18px; }
+.promise + .promise { border-left: 1px solid #cbdaf0; padding-left: 30px; }
+.promise > svg { width: 49px; height: 49px; flex-shrink: 0; color: #08467f; }
+.promise h2 { font-size: 16px; line-height: 1.3; font-weight: 800; letter-spacing: -.035em; }
+.promise p { margin-top: 4px; color: #395579; font-size: 12px; line-height: 1.55; }
+.promise:hover h2, .information:hover h2 { text-decoration: underline; text-underline-offset: 3px; }
+.comparison { padding-top: 24px; }
+.informationStrip { display: grid; grid-template-columns: repeat(3, 1fr); margin-block: 15px 10px; padding: 16px 18px; background: #e2edfa; border-radius: 10px; }
+.information { display: flex; align-items: center; gap: 18px; padding-inline: 3px 17px; }
+.information + .information { border-left: 1px solid #b9d2f3; padding-left: 32px; }
+.informationIcon { display: grid; place-items: center; flex-shrink: 0; width: 62px; height: 62px; border-radius: 50%; border: 1px solid #f8fbff; background: #eff5fe; }
+.informationIcon svg { width: 36px; height: 36px; }
+.information h2 { font-size: 14px; font-weight: 800; line-height: 1.3; letter-spacing: -.03em; }
+.information p { font-size: 11px; line-height: 1.5; color: #526e91; margin-top: 3px; }
+@media (min-width: 1200px) {
+  .heroInner { min-height: 370px; }
+  .heroCopy { padding-block: 55px 68px; }
+  .mascot { width: 385px; height: 385px; top: -1px; right: 13px; }
+  .boardPattern { width: 560px; height: 420px; }
+  .promiseStrip { padding-block: 27px; }
+  .promise p { font-size: 14px; }
+}
+@media (min-width: 741px) and (max-width: 950px) {
+  .heroCopy h1 { font-size: 34px; }
+  .heroCopy p { max-width: 480px; font-size: 16px; }
+  .heroCopy { padding-left: 8px; }
+  .mascot { width: 295px; height: 295px; top: 23px; right: -5px; }
+  .promise { gap: 12px; padding-inline: 8px; }
+  .promise + .promise { padding-left: 18px; }
+  .promise > svg { width: 35px; height: 35px; }
+  .promise h2 { font-size: 14px; }
+  .promise p { font-size: 11px; }
+  .information { gap: 10px; }
+  .information + .information { padding-left: 18px; }
+  .informationIcon { width: 44px; height: 44px; }
+  .informationIcon svg { width: 28px; height: 28px; }
+}
+@media (max-width: 740px) {
+  .heroInner { display: block; min-height: 0; }
+  .heroCopy { padding: 30px 8px 0; }
+  .goldLine { width: 52px; height: 3px; margin-bottom: 16px; }
+  .heroCopy h1 { font-size: clamp(29px, 7.6vw, 44px); line-height: 1.13; letter-spacing: -.04em; }
+  .heroCopy p { font-size: 16px; line-height: 1.6; max-width: 450px; margin-top: 14px; }
+  .heroButton { min-height: 46px; font-size: 14px; padding-inline: 16px; margin-top: 20px; }
+  .heroArt { position: relative; height: 226px; width: 100%; right: auto; margin-top: -5px; }
+  .mascot { width: 250px; height: 250px; top: -5px; right: calc(50% - 125px); }
+  .boardPattern { width: 370px; height: 290px; right: calc(50% - 230px); top: -20px; }
+  .promiseStrip { grid-template-columns: 1fr; gap: 15px; padding: 20px; margin: -10px 0 0; }
+  .promise { padding: 0; gap: 18px; }
+  .promise + .promise { padding: 15px 0 0; border-left: 0; border-top: 1px solid #e1eaf5; }
+  .promise > svg { width: 38px; height: 38px; }
+  .promise h2 { font-size: 15px; }
+  .promise p { font-size: 12px; }
+  .comparison { padding-top: 27px; }
+  .informationStrip { grid-template-columns: 1fr; padding: 18px; gap: 15px; margin-block: 20px; }
+  .information { padding: 0; gap: 15px; }
+  .information + .information { border-left: 0; border-top: 1px solid #c8daf1; padding: 15px 0 0; }
+  .informationIcon { width: 48px; height: 48px; }
+  .informationIcon svg { width: 29px; height: 29px; }
+  .information h2 { font-size: 15px; }
+  .information p { font-size: 12px; }
+}

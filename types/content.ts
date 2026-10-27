@@ -9,3 +9,8 @@ export interface EditorialEntry {
   readonly updatedAt: string;
   readonly Component: ComponentType<MDXProps>;
 }
+
+export interface ReviewEntry extends EditorialEntry {
+  readonly status: "draft" | "published";
+  readonly author: string;
+}

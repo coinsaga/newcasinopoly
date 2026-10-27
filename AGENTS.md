@@ -12,8 +12,25 @@ scrivere i contenuti pubblici del sito in inglese naturale per il Sudafrica.
   SEO strategist. Costruire il sito passo dopo passo, evitando overengineering.
 - Nome e dominio confermati: Casinopoly, https://casinopoly.io/. Il nuovo sito
   sostituirà quello esistente.
-- L'utente ha autorizzato il primo passo di implementazione. Procedere per fasi;
-  identità visiva definitiva ed elenco operatori sono ancora da definire.
+- L'utente ha autorizzato il restyling moderno di Casinopoly: mantenere logo e
+  mascotte originali, blu/oro/verde, con qualità grafica elevata. La homepage deve
+  presentare subito un confronto operatori e schede leggibili su mobile, non
+  limitarsi a una landing editoriale. Conservare la base tecnica utile.
+- L'elenco operatori reale è ancora da definire. Gli esempi per la preview grafica
+  vanno indicati chiaramente come fittizi, separati dal catalogo e senza redirect
+  affiliate. Non pubblicarli come raccomandazioni.
+- Il mockup fornito dall'utente il 20 ottobre 2026 è il riferimento attuale:
+  hero blu, mascotte con anello oro, fascia informativa sovrapposta, tabella
+  compatta Demo Operator A–D, filtri e footer compatto. I punteggi e reader rating
+  del mockup sono ammessi esclusivamente come placeholder etichettati demo,
+  senza schema Review/AggregateRating o affermazioni di valutazioni reali.
+  Le CTA degli operatori demo della home aprono dettagli illustrativi locali.
+- Il 22 ottobre 2026 l'utente ha autorizzato lo sviluppo di un template per le
+  recensioni, usando dati delle review esistenti. YesPlay è il primo esempio in
+  `/reviews/yesplay`: dati strutturati locali, testo MDX e fonti primarie datate.
+  Distinguere il punteggio della vecchia review da una nuova valutazione.
+  Le recensioni in bozza restano noindex, escluse dalla sitemap e dai redirect
+  affiliate; renderizzarle solo nella modalità designPreview esplicita.
 
 ## Priorità, nell'ordine indicato dall'utente
 
@@ -142,3 +159,13 @@ affermazioni di liceità. Fonti ufficiali di partenza:
 - https://www.ngb.org.za/industry-regulation/enforcement/
 - https://www.ngb.org.za/faqs/
 - https://www.ngb.org.za/verified-operators/
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+## This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->
